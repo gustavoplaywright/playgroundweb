@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo de demostración con filtros y carga dinámica para pruebas E2E.">
+  <title>Catálogo — PruebaLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav-wrap" aria-label="Navegación principal">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span> PruebaLab</a>
+    <button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <div class="nav-links" data-nav-links><a href="index.html" data-page-link>Inicio</a><a href="catalog.html" data-page-link>Catálogo</a><a href="form.html" data-page-link>Registro</a><a href="dashboard.html" data-page-link>Dashboard</a><a href="contact.html" data-page-link>Contacto</a></div>
+  </nav></header>
+  <main>
+    <section class="page-intro"><div class="container"><p class="eyebrow">Explora la colección</p><h1>Un catálogo para probar</h1><p class="lead">Busca productos, combina filtros y verifica cómo cambia la lista en tiempo real.</p></div></section>
+    <section class="section section--compact"><div class="container">
+      <div class="toolbar">
+        <div class="toolbar-controls">
+          <div class="field"><label for="product-search">Buscar productos</label><input id="product-search" name="search" type="search" placeholder="Ej. plan, kit..." data-testid="product-search"></div>
+          <div class="field"><label for="product-category">Categoría</label><select class="filter-select" id="product-category" name="category" data-testid="category-filter"><option value="all">Todas las categorías</option><option value="starter">Kits</option><option value="plans">Planes</option><option value="resources">Recursos</option></select></div>
+        </div>
+        <p id="product-count" class="result-count" aria-live="polite"></p>
+      </div>
+      <div class="product-grid" id="product-grid" data-testid="product-list" aria-live="polite"></div>
+      <div class="load-more-wrap"><button class="button button--secondary" id="btn-load-more" type="button" data-testid="load-more">Cargar más productos</button></div>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>PruebaLab · Playground para QA Automation</span><a href="contact.html">¿Necesitas ayuda? Contáctanos</a></div></footer>
+</body>
+</html>

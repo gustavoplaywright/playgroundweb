@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard interactivo con tabla, filtros, modal y alertas para pruebas E2E.">
+  <title>Dashboard — PruebaLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav-wrap" aria-label="Navegación principal">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span> PruebaLab</a>
+    <button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <div class="nav-links" data-nav-links><a href="index.html" data-page-link>Inicio</a><a href="catalog.html" data-page-link>Catálogo</a><a href="form.html" data-page-link>Registro</a><a href="dashboard.html" data-page-link>Dashboard</a><a href="contact.html" data-page-link>Contacto</a></div>
+  </nav></header>
+  <main>
+    <section class="page-intro"><div class="container"><p class="eyebrow">Resumen de actividad</p><h1>Dashboard</h1><p class="lead">Datos dinámicos en memoria para practicar búsquedas, filtros, altas, bajas y modales.</p></div></section>
+    <section class="section section--compact"><div class="container">
+      <div class="stats-grid">
+        <article class="stat-card"><span>Pedidos en la tabla</span><strong id="order-total" data-testid="order-total">5</strong><span class="stat-change">Actualizado ahora</span></article>
+        <article class="stat-card"><span>Ingresos de ejemplo</span><strong>$12.4k</strong><span class="stat-change">↑ 8.2% este mes</span></article>
+        <article class="stat-card"><span>Conversión</span><strong>4.8%</strong><span class="stat-change">↑ 0.6% esta semana</span></article>
+        <article class="stat-card"><span>Satisfacción</span><strong>96%</strong><span class="stat-change">↑ 2 puntos</span></article>
+      </div>
+      <div class="table-toolbar">
+        <div><h2>Pedidos recientes</h2><p class="muted small">Filtra por texto o estado. Los cambios se reflejan al instante.</p></div>
+        <button class="button" id="btn-open-modal" type="button" data-testid="open-modal">＋ Nuevo pedido</button>
+      </div>
+      <div class="toolbar-controls">
+        <div class="field"><label for="table-search">Buscar pedido</label><input id="table-search" name="tableSearch" type="search" placeholder="ID, cliente o producto" data-testid="table-search"></div>
+        <div class="field"><label for="status-filter">Estado</label><select id="status-filter" name="status" class="filter-select" data-testid="status-filter"><option value="all">Todos los estados</option><option value="Completado">Completado</option><option value="Pendiente">Pendiente</option><option value="Cancelado">Cancelado</option></select></div>
+      </div>
+      <div class="table-wrap" style="margin-top: 16px">
+        <table aria-label="Pedidos recientes">
+          <thead><tr><th scope="col">Pedido</th><th scope="col">Cliente</th><th scope="col">Producto</th><th scope="col">Fecha</th><th scope="col">Importe</th><th scope="col">Estado</th><th scope="col">Acciones</th></tr></thead>
+          <tbody id="orders-table" data-testid="orders-table"></tbody>
+        </table>
+      </div>
+    </div></section>
+    <div class="modal-backdrop" id="order-modal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+        <div class="modal-header"><div><p class="eyebrow">Nuevo registro</p><h2 id="modal-title">Crear pedido</h2></div><button class="icon-button" id="btn-close-modal" type="button" aria-label="Cerrar modal">×</button></div>
+        <p class="modal-body" id="modal-description">Completa los datos para agregar una fila a la tabla.</p>
+        <form id="order-form">
+          <div class="field"><label for="order-customer">Nombre del cliente</label><input id="order-customer" name="customer" required minlength="2" placeholder="Nombre Apellido"></div>
+          <div class="field" style="margin-top: 15px"><label for="order-item">Producto</label><select id="order-item" name="item" required><option value="">Selecciona un producto</option><option>Kit de bienvenida</option><option>Plan esencial</option><option>Guía de productividad</option><option>Caja de herramientas</option><option>Plan equipo</option><option>Plantillas creativas</option></select></div>
+          <div class="modal-actions" style="margin-top: 22px"><button class="button button--secondary" id="btn-cancel-modal" type="button">Cancelar</button><button class="button" id="btn-create-order" type="submit">Guardar pedido</button></div>
+        </form>
+      </section>
+    </div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>PruebaLab · Playground para QA Automation</span><span>Los cambios se reinician al recargar.</span></div></footer>
+</body>
+</html>

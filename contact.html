@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario de contacto con campos condicionales y estados de respuesta E2E.">
+  <title>Contacto — PruebaLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav-wrap" aria-label="Navegación principal">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span> PruebaLab</a>
+    <button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <div class="nav-links" data-nav-links><a href="index.html" data-page-link>Inicio</a><a href="catalog.html" data-page-link>Catálogo</a><a href="form.html" data-page-link>Registro</a><a href="dashboard.html" data-page-link>Dashboard</a><a href="contact.html" data-page-link>Contacto</a></div>
+  </nav></header>
+  <main>
+    <section class="page-intro"><div class="container"><p class="eyebrow">Estamos para ayudarte</p><h1>Hablemos de tu próximo proyecto</h1><p class="lead">Completa el formulario y observa los estados de respuesta. No se envían datos a ningún servidor.</p></div></section>
+    <section class="section section--compact"><div class="container form-layout">
+      <form class="form-card" id="contact-form" data-testid="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field"><label for="contact-name">Nombre</label><input id="contact-name" name="contactName" type="text" autocomplete="name" required minlength="2" placeholder="Tu nombre"></div>
+          <div class="field"><label for="contact-email">Correo electrónico</label><input id="contact-email" name="contactEmail" type="email" autocomplete="email" required placeholder="tu@correo.com"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="inquiry-type">Motivo de contacto</label><select id="inquiry-type" name="inquiryType" required><option value="">Selecciona un motivo</option><option value="support">Soporte</option><option value="business">Consulta comercial</option><option value="feedback">Comentarios</option></select></div>
+          <div class="field conditional-field" id="company-field" hidden><label for="company-name">Empresa</label><input id="company-name" name="companyName" type="text" autocomplete="organization" placeholder="Nombre de tu empresa"></div>
+        </div>
+        <div class="field"><label for="contact-message">Mensaje</label><textarea id="contact-message" name="message" required minlength="10" maxlength="500" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea><span class="field-hint" id="message-count" aria-live="polite">0 / 500</span></div>
+        <div class="field">
+          <span class="field-label" id="reply-label">¿Cómo prefieres que te contactemos?</span>
+          <div class="choice-group" role="radiogroup" aria-labelledby="reply-label">
+            <label class="choice"><input type="radio" name="replyMethod" value="email" required> Correo</label>
+            <label class="choice"><input type="radio" name="replyMethod" value="phone"> Teléfono</label>
+          </div>
+        </div>
+        <label class="checkbox-row" style="margin-top: 18px"><input id="simulate-error" name="simulateError" type="checkbox"><span>Simular respuesta de error del servidor <span class="field-hint">(solo para practicar estados E2E)</span></span></label>
+        <label class="checkbox-row" style="margin-top: 12px"><input id="contact-consent" name="consent" type="checkbox" required><span>Acepto que se utilicen mis datos para responder esta consulta.</span></label>
+        <div class="form-actions"><button class="button" id="btn-contact-submit" type="submit">Enviar mensaje</button><button class="button button--secondary" type="reset">Limpiar</button></div>
+        <div class="form-status" id="contact-status" role="status" aria-live="polite" data-testid="contact-status"></div>
+      </form>
+      <aside class="card aside-card"><div class="feature-icon" aria-hidden="true">✉</div><h3>Un entorno seguro para probar</h3><p class="muted small">Este formulario es una demostración local. Ningún mensaje ni dato personal se transmite o almacena.</p><ul class="small"><li>Elige “Consulta comercial” para mostrar el campo Empresa.</li><li>Activa la simulación para comprobar el estado de error.</li><li>Envía el formulario para observar el estado de éxito.</li></ul></aside>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>PruebaLab · Playground para QA Automation</span><a href="catalog.html">Volver al catálogo</a></div></footer>
+</body>
+</html>

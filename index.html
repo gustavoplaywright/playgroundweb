@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Un playground estático para practicar automatización E2E con Playwright.">
+  <title>PruebaLab — Playground E2E</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">P</span> PruebaLab</a>
+      <button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Abrir menú">☰</button>
+      <div class="nav-links" data-nav-links>
+        <a href="index.html" data-page-link>Inicio</a><a href="catalog.html" data-page-link>Catálogo</a><a href="form.html" data-page-link>Registro</a><a href="dashboard.html" data-page-link>Dashboard</a><a href="contact.html" data-page-link>Contacto</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Playground E2E · sin dependencias</p>
+          <h1>Prueba con confianza. <span>Automatiza con claridad.</span></h1>
+          <p class="lead">Un entorno de práctica listo para explorar flujos reales, validar estados y escribir pruebas de extremo a extremo con Playwright.</p>
+          <div class="hero-actions"><a class="button" href="catalog.html">Explorar el playground <span aria-hidden="true">→</span></a><a class="button button--secondary" href="dashboard.html">Ver dashboard</a></div>
+          <div class="hero-note"><span class="status-dot" aria-hidden="true"></span> HTML, CSS y JavaScript vanilla; no necesitas backend.</div>
+        </div>
+        <aside class="hero-card" aria-label="Ejemplo de prueba Playwright">
+          <div class="hero-card-top"><strong>Tu próxima prueba</strong><div class="code-dots" aria-hidden="true"><span></span><span></span><span></span></div></div>
+          <div class="code-sample"><span class="green">await</span> page.goto(<span class="yellow">'/form.html'</span>);<br><span class="green">await</span> page.getByLabel(<span class="yellow">'Correo electrónico'</span>)<br>&nbsp;&nbsp;.fill(<span class="yellow">'qa@example.com'</span>);<br><span class="green">await</span> page.getByRole(<span class="yellow">'button'</span>, { name: <span class="yellow">'Crear cuenta'</span> })<br>&nbsp;&nbsp;.click();<br><span class="green">await</span> expect(page.getByRole(<span class="yellow">'status'</span>))<br>&nbsp;&nbsp;.toBeVisible();</div>
+          <div class="metric-row"><div class="metric"><strong>5</strong><span>páginas</span></div><div class="metric"><strong>0</strong><span>dependencias</span></div><div class="metric"><strong>∞</strong><span>escenarios</span></div></div>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--compact">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">Explora los escenarios</p><h2>Practica cada interacción</h2></div><p>Controles accesibles, estados observables y atributos de prueba pensados para tus selectores.</p></div>
+        <div class="feature-grid">
+          <a class="card link-card" href="catalog.html"><div class="feature-icon" aria-hidden="true">▦</div><h3>Catálogo y filtros</h3><p class="muted small">Busca, filtra por categoría y carga más tarjetas.</p><span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="card link-card" href="form.html"><div class="feature-icon" aria-hidden="true">✎</div><h3>Formulario validado</h3><p class="muted small">Campos requeridos, tipos nativos y validación cruzada.</p><span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="card link-card" href="dashboard.html"><div class="feature-icon" aria-hidden="true">▤</div><h3>Dashboard dinámico</h3><p class="muted small">Filtra y elimina filas; crea pedidos desde un modal.</p><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="section section--compact">
+      <div class="container link-grid">
+        <a class="card link-card" href="contact.html"><h3>Flujos de contacto <span class="arrow" aria-hidden="true">↗</span></h3><p class="muted small">Campos condicionales y respuestas de éxito o error.</p></a>
+        <div class="card"><h3>Selectores estables</h3><p class="muted small">Usa IDs únicos, roles, labels y atributos <code>data-testid</code>.</p></div>
+        <div class="card"><h3>Todo en el navegador</h3><p class="muted small">Los datos son de demostración y se reinician al recargar la página.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>PruebaLab · Playground para QA Automation</span><span>Hecho para practicar, listo para automatizar.</span></div></footer>
+</body>
+</html>
