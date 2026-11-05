@@ -27,6 +27,16 @@
       <div class="product-grid" id="product-grid" data-testid="product-list" aria-live="polite"></div>
       <div class="load-more-wrap"><button class="button button--secondary" id="btn-load-more" type="button" data-testid="load-more">Cargar más productos</button></div>
     </div></section>
+    <div class="modal-backdrop" id="product-details-modal" data-testid="product-details-modal" hidden>
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="product-details-title" aria-describedby="product-details-description">
+        <div class="modal-header">
+          <div><p class="eyebrow">Detalle del producto</p><h2 id="product-details-title"></h2></div>
+          <button class="icon-button" id="btn-close-product-details" type="button" aria-label="Cerrar detalles">×</button>
+        </div>
+        <p class="modal-body" id="product-details-description"></p>
+        <div class="modal-actions"><button class="button" id="btn-done-product-details" type="button">Listo</button></div>
+      </section>
+    </div>
   </main>
   <footer class="site-footer"><div class="container footer-inner"><span>PruebaLab · Playground para QA Automation</span><a href="contact.html">¿Necesitas ayuda? Contáctanos</a></div></footer>
 </body>

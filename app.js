@@ -97,6 +97,8 @@ const productCategory = document.getElementById("product-category");
 const productSearch = document.getElementById("product-search");
 const loadMoreButton = document.getElementById("btn-load-more");
 const productCount = document.getElementById("product-count");
+const productDetailsModal = document.getElementById("product-details-modal");
+let productDetailsTrigger = null;
 
 const products = [
   { name: "Kit de bienvenida", category: "starter", icon: "🎒", price: "$24", description: "Todo lo esencial para empezar a explorar." },
@@ -137,10 +139,30 @@ function renderProducts() {
   productGrid.querySelectorAll("[data-product-action]").forEach((button) => {
     button.addEventListener("click", () => {
       const selected = products.find((product) => product.name === button.dataset.productAction);
-      showToast(`${selected.name}: ${selected.description}`, "success");
+      if (!selected || !productDetailsModal) return;
+      productDetailsTrigger = button;
+      document.getElementById("product-details-title").textContent = selected.name;
+      document.getElementById("product-details-description").textContent = `${selected.description} Precio: ${selected.price}.`;
+      productDetailsModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      document.getElementById("btn-close-product-details").focus();
     });
   });
 }
+
+function closeProductDetails() {
+  if (!productDetailsModal) return;
+  productDetailsModal.hidden = true;
+  document.body.style.overflow = "";
+  productDetailsTrigger?.focus();
+  productDetailsTrigger = null;
+}
+
+document.getElementById("btn-close-product-details")?.addEventListener("click", closeProductDetails);
+document.getElementById("btn-done-product-details")?.addEventListener("click", closeProductDetails);
+productDetailsModal?.addEventListener("click", (event) => {
+  if (event.target === productDetailsModal) closeProductDetails();
+});
 
 productCategory?.addEventListener("change", () => { visibleProductCount = 6; renderProducts(); });
 productSearch?.addEventListener("input", () => { visibleProductCount = 6; renderProducts(); });
@@ -219,6 +241,7 @@ modalBackdrop?.addEventListener("click", (event) => {
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && modalBackdrop && !modalBackdrop.hidden) closeModal();
+  if (event.key === "Escape" && productDetailsModal && !productDetailsModal.hidden) closeProductDetails();
 });
 
 modalForm?.addEventListener("submit", (event) => {
