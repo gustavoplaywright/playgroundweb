@@ -1,0 +1,16 @@
+name: Disparar Pruebas E2E
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar señal a repositorio de automatización
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.MY_GITHUB_PAT }}
+          repository: gustavoplaywright/automatizacionplayground
+          event_type: run-playwright-tests
