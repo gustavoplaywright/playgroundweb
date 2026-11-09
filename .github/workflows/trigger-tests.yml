@@ -13,4 +13,4 @@ jobs:
         with:
           token: ${{ secrets.MY_GITHUB_PAT }}
           repository: gustavoplaywright/automatizacionplayground
-          event_type: run-playwright-tests
+          event-type: run-playwright-tests # <--- CAMBIADO DE event_type A event-type
